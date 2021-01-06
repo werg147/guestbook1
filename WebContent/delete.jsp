@@ -9,12 +9,12 @@
 	GuestVo guestVo = new GuestVo(no, password);
 	
 	GuestDao guestDao = new GuestDao();
-	guestDao.guestDelete(guestVo);
-	
+	int count = guestDao.guestDelete(guestVo);
 	
 	
 	//response.sendRedirect("./addList.jsp");
 %>
+
 
 <!DOCTYPE html>
 <html>
@@ -28,11 +28,11 @@
 	     1리턴 -> 삭제성공
 	     0리턴 -> 삭제실패-->
 	
-	<%int ret = guestDao.guestDelete(guestVo); %>
-	
-	<%if(1==ret){%>
-			response.sendRedirect("./addList.jsp");
-	<% } else {%>
+	<%if(count == 1){
+			response.sendRedirect("./addList.jsp"); //보통 리다이렉트보다 페이지 이동으로 맞추어 넣는다(아래 비밀번호 다시입력처럼)
+			//삭제됐습니다. <br>
+			//<a href="./addList.jsp">처음으로 이동</a>
+	} else if(count == 0) {%>
 			비밀번호를 잘못입력했습니다.<br>
 			<a href="./deleteForm.jsp?no=<%=guestVo.getNo() %>">비밀번호 다시 입력</a>
 	<%} %>
