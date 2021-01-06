@@ -11,6 +11,17 @@ public class GuestVo {
 	public GuestVo() {
 	}
 
+	public GuestVo(int no) {
+		super();
+		this.no = no;
+	}
+
+	public GuestVo(int no, String password) {
+		super();
+		this.no = no;
+		this.password = password;
+	}
+
 	public GuestVo(String name, String password, String content) {
 		super();
 		this.name = name;
@@ -67,7 +78,7 @@ public class GuestVo {
 		this.regDate = regDate;
 	}
 
-	//toString
+	// toString
 	@Override
 	public String toString() {
 		return "GuestVo [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content + ", regDate="

@@ -7,9 +7,9 @@
 
 <%
 	GuestDao guestDao = new GuestDao();
-List<GuestVo> guestList = guestDao.getGuestList();
+	List<GuestVo> guestList = guestDao.getGuestList();
 
-System.out.println(guestList.toString());
+	System.out.println(guestList.toString());
 %>
 
 <!DOCTYPE html>

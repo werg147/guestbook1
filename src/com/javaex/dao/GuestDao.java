@@ -127,7 +127,7 @@ public class GuestDao {
 	}
 
 	// 삭제
-	public int guestDelete(int no) {
+	public int guestDelete(GuestVo guestVo) { //delete 비밀번호 비교 추가
 
 		getConnection();
 
@@ -138,10 +138,12 @@ public class GuestDao {
 			String query = "";
 			query += " delete from guestbook ";
 			query += " where no = ? ";
+			query += " and password = ? ";
 
 			pstmt = conn.prepareStatement(query);
 
-			pstmt.setInt(1, no);
+			pstmt.setInt(1, guestVo.getNo() );
+			pstmt.setString(2, guestVo.getPassword());
 
 			count = pstmt.executeUpdate();
 			// System.out.println("삭제" + count);
@@ -180,11 +182,11 @@ public class GuestDao {
 			while (rs.next()) {
 				int No = rs.getInt("no");
 				String name = rs.getString("name");
-				String password = rs.getString("password");
+				String passWord = rs.getString("password");
 				String content = rs.getString("content");
 				String regDate = rs.getString("reg_date");
 
-				GuestVo vo = new GuestVo(No, name, password, content, regDate);
+				GuestVo vo = new GuestVo(No, name, passWord, content, regDate);
 			}
 
 		} catch (SQLException e) {
