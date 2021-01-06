@@ -67,6 +67,7 @@ public class GuestVo {
 		this.regDate = regDate;
 	}
 
+	//toString
 	@Override
 	public String toString() {
 		return "GuestVo [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content + ", regDate="
